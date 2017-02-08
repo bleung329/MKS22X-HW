@@ -9,15 +9,18 @@ public class Recursion{
 		return sqrti(n,1);
 	}
 	public static double sqrti(double n,double guess){
+		if (n<0){
+			throw new IllegalArgumentException();
+		}
 		if (equal(guess*guess,n)){
 			return guess;
 		}else{
-			double better_guess = ( n / guess + guess) / 2;
-			return sqrti(n,better_guess);
+			return sqrti(n,( n / guess + guess) / 2);
 		}
-	}
-	/*public static void main(String[] noargs){
+	}/*
+	public static void main(String[] noargs){
 		System.out.println(sqrt(169));
 		System.out.println(name());
+		System.out.println(sqrt(-1));
 	}*/
 }
