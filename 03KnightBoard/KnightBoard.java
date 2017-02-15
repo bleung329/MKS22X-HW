@@ -38,10 +38,18 @@ public class KnightBoard{
 	    return false;
 	}
     }   
+    public String boord(){
+	String ret = "Y->\n";
+	for (int i = 0;i<board.length;i++){
+	    ret+=Arrays.toString(board[i])+"\n";
+	}
+	System.out.println(ret);
+	return ret;
+    }
     public static void main(String[] args){
 	KnightBoard ni = new KnightBoard(5,5);
 	ni.putKnight(0,500,1);
-       	System.out.println(Arrays.deepToString(ni.board));
+	ni.boord();
     }
 
 }
