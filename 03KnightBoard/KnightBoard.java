@@ -10,45 +10,66 @@ public class KnightBoard{
     } //blank if you never called solve or when there is no solution
 
     public void solve(){
-	if (solveH(0,0,0)){
+	if (solveH(0,0,1)){
 	    System.out.println("YAY");}
 	else{
 	    System.out.println("AW");}
     } 
 
     private boolean solveH(int row ,int col, int level){
-	if (level>startingRows*startingCols){
+	if (level==board.length*board[0].length){
 	    return true;
 	}else{
-	    //Put a thing somewhere in here?
-	    return (solveH(row+2,col+1,level+1)||
-		    solveH(row-2,col+1,level+1)||
-		    solveH(row+2,col-1,level+1)||
-		    solveH(row-2,col-1,level+1)||
-		    solveH(row+1,col+2,level+1)||
-		    solveH(row-1,col+2,level+1)||
-		    solveH(row+1,col-2,level+1)||
-		    solveH(row-1,col-2,level+1))
-		    }}*/ // level is the # of the knight
-    public boolean putKnight(int x, int y, int level){
+	    if (goodSpot(row,col)){
+		putKnight(row,col,level);
+		return (solveH(row+2,col+1,level+1)||
+			solveH(row-2,col+1,level+1)||
+			solveH(row+2,col-1,level+1)||
+			solveH(row-2,col-1,level+1)||
+			solveH(row+1,col+2,level+1)||
+			solveH(row-1,col+2,level+1)||
+			solveH(row+1,col-2,level+1)||
+			solveH(row-1,col-2,level+1));
+	    }
+	    else{
+		for(int i=0;i<board.length;i++)
+		    for(int j=0;j<board[i].length;j++)
+			{
+			    board[i][j]=0;
+			}
+		return false;
+	    }
+	}
+    } // level is the # of the knight
+    public void putKnight(int x, int y, int level){
+	board[x][y] = level;
+    }
+    public boolean goodSpot(int x, int y){
 	try{
-	    board[x][y] = level;
-	    return true;
+	    if (!(board[x][y]==0)){
+		return false;
+	    }else{
+		return true;
+	    }
 	}catch(Exception e){
 	    return false;
 	}
-    }   
+    }
     public String boord(){
 	String ret = "Y->\n";
-	for (int i = 0;i<board.length;i++){
-	    ret+=Arrays.toString(board[i])+"\n";
+	for (int i = 0; i<board.length;i++){
+	    for (int j = 0;j<board[i].length;j++){
+		ret+=""+board[i][j]+"\t";
+	    }
+	    ret+="\n";
 	}
 	System.out.println(ret);
 	return ret;
     }
     public static void main(String[] args){
-	KnightBoard ni = new KnightBoard(5,5);
-	ni.putKnight(0,500,1);
+	KnightBoard ni = new KnightBoard(10,10);
+	ni.boord();
+	ni.solve();
 	ni.boord();
     }
 
