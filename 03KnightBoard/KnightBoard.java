@@ -8,7 +8,7 @@ public class KnightBoard{
     public String toString(){
 	return "Hi";
     } //blank if you never called solve or when there is no solution
-    /*
+
     public void solve(){
 	if (solveH(0,0,0)){
 	    System.out.println("YAY");}
@@ -20,7 +20,7 @@ public class KnightBoard{
 	if (level>startingRows*startingCols){
 	    return true;
 	}else{
-	    
+	    //Put a thing somewhere in here?
 	    return (solveH(row+2,col+1,level+1)||
 		    solveH(row-2,col+1,level+1)||
 		    solveH(row+2,col-1,level+1)||
