@@ -44,16 +44,13 @@ public class KnightBoard{
     public void putKnight(int x, int y, int level){
 	board[x][y] = level;
     }
-    public boolean goodSpot(int x, int y){
-	try{
-	    if (!(board[x][y]==0)){
-		return false;
-	    }else{
-		return true;
+    public int[][] goodSpots(int x, int y){
+        int[][] spots = [[2,1],[2,-1],[-2,1],[-2,-1],[1,2],[1,-2],[-1,2],[-1,-2]];
+	int[][] ret = int[8][2];
+	for (int[] item: spots){
+	    if (!(board[x+item[0]][y+item[1]]==0)){
 	    }
-	}catch(Exception e){
-	    return false;
-	}
+	    //ADD STUFF
     }
     public String boord(){
 	String ret = "Y->\n";
