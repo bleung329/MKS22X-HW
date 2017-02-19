@@ -6,7 +6,10 @@ public class KnightBoard{
 	board = new int[startingRows][startingCols];
     } 
     public String toString(){
-	return "Hi";
+	if (solution==null){
+	    return "";
+	}
+	return boord();
     } //blank if you never called solve or when there is no solution
 
     public void solve(){
@@ -20,7 +23,7 @@ public class KnightBoard{
 	if (level==board.length*board[0].length){
 	    return true;
 	}else{
-	    if (goodSpot(row,col)){
+   	    if (goodSpots(row,col)){
 		putKnight(row,col,level);
 		return (solveH(row+2,col+1,level+1)||
 			solveH(row-2,col+1,level+1)||
@@ -42,15 +45,25 @@ public class KnightBoard{
 	}
     } // level is the # of the knight
     public void putKnight(int x, int y, int level){
+
 	board[x][y] = level;
     }
     public int[][] goodSpots(int x, int y){
-        int[][] spots = [[2,1],[2,-1],[-2,1],[-2,-1],[1,2],[1,-2],[-1,2],[-1,-2]];
-	int[][] ret = int[8][2];
-	for (int[] item: spots){
-	    if (!(board[x+item[0]][y+item[1]]==0)){
+        int[][] spots = {{2,1},{2,-1},{-2,1},{-2,-1},{1,2},{1,-2},{-1,2},{-1,-2}};
+	    int[][] ret = new int[8][2];
+	    for (int i = 0; i<8; i++){
+	        try{
+		        if (!(board[x+spots[i][0]][y+spots[i][1]]==0)){
+		            ret[i] = {x+spots[i][0],y+spots[i][1]};
+		        }
+		        else{
+		            ret[i] = {-1,-1};
+		        }
+                }catch(Exception e){
+		        ret[i] = {-1,-1};
+	        }
 	    }
-	    //ADD STUFF
+	    return ret;
     }
     public String boord(){
 	String ret = "Y->\n";
