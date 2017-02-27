@@ -3,11 +3,7 @@ import java.io.*;
 
 public class Maze{
     private char[][] maze;
-    private boolean animatepublic class Maze{
-
-    private char[][]maze;
     private boolean animate;
-
     /*Constructor loads a maze text file, and sets animate to false by default.
       1. The file contains a rectangular ascii maze, made with the following 4 characters:
       '#' - locations that cannot be moved onto
@@ -18,8 +14,17 @@ public class Maze{
       2. The maze has a border of '#' around the edges. So you don't have to check for out of bounds!
       3. When the file is not found OR there is no E or S then: print an error and exit the program.
     */
-    public Maze(String filename){
+    public Maze(String filename) throws IOException {
         //COMPLETE CONSTRUCTOR
+	String thing = "";
+	File file = new File(filename);
+	Scanner scanner = new Scanner(file);
+	int lineNum = 1;
+	while(scanner.hasNextLine()){
+	    thing+=scanner.nextLine();
+	    lineNum+=1;
+	}
+	System.out.println(thing);
     }
 
     public void setAnimate(boolean b){
@@ -29,16 +34,16 @@ public class Maze{
     public void clearTerminal(){
         System.out.println("\033[2J");
     }
-
+    
 
     /*Wrapper Solve Function
       Since the constructor exits when the file is not found or is missing an E or S, we can assume it exists.
-    */
-    public boolean solve(){
+    *//*
+    public void solve(){
             int startx=0,starty=0;
             //Initialize startx and starty with the location of the S. 
             maze[startx][starty] = ' ';//erase the S, and start solving!
-            return solve(startx,starty);
+            //return solve(startx,starty);
     }
 
     /*
@@ -53,7 +58,7 @@ public class Maze{
         The S is replaced with '@' but the 'E' is not.
         All visited spots that were not part of the solution are changed to '.'
         All visited spots that are part of the solution are changed to '@'
-    */
+      *//*
     private boolean solve(int x, int y){
         if(animate){
             System.out.println(this);
@@ -62,6 +67,6 @@ public class Maze{
 
         //COMPLETE SOLVE
         return false; //so it compiles
-    }
-
+	*/
 }
+
