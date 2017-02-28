@@ -44,9 +44,9 @@ public class KnightBoard{
 	    }
 	}
     } // level is the # of the knight
+    
     public void putKnight(int x, int y, int level){
-
-	board[x][y] = level;
+	    board[x][y] = level;
     }
     public int[][] goodSpots(int x, int y){
         int[][] spots = {{2,1},{2,-1},{-2,1},{-2,-1},{1,2},{1,-2},{-1,2},{-1,-2}};
@@ -54,13 +54,16 @@ public class KnightBoard{
 	    for (int i = 0; i<8; i++){
 	        try{
 		        if (!(board[x+spots[i][0]][y+spots[i][1]]==0)){
-		            ret[i] = {x+spots[i][0],y+spots[i][1]};
+		            ret[i][0] = x+spots[i][0];
+                    ret[i][1] = y+spots[i][1];
 		        }
 		        else{
-		            ret[i] = {-1,-1};
+                    ret[i][0] = -1;
+                    ret[i][1] = -1;
 		        }
                 }catch(Exception e){
-		        ret[i] = {-1,-1};
+		            ret[i][0] = -1;
+                    ret[i][1] = -1;
 	        }
 	    }
 	    return ret;
