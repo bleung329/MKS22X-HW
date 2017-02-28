@@ -1,4 +1,5 @@
 import java.util.Arrays;
+
 public class KnightBoard{
     public int[][] board;
     public int[][] solution;
@@ -20,34 +21,35 @@ public class KnightBoard{
     } 
 
     private boolean solveH(int row ,int col, int level){
-	if (level==board.length*board[0].length){
-	    return true;
-	}else{
-   	    if (goodSpots(row,col)){
-		putKnight(row,col,level);
-		return (solveH(row+2,col+1,level+1)||
-			solveH(row-2,col+1,level+1)||
-			solveH(row+2,col-1,level+1)||
-			solveH(row-2,col-1,level+1)||
-			solveH(row+1,col+2,level+1)||
-			solveH(row-1,col+2,level+1)||
-			solveH(row+1,col-2,level+1)||
-			solveH(row-1,col-2,level+1));
+	    if (level==board.length*board[0].length){
+	        return true;
+	    }else{
+   	        if (goodSpots(row,col)){
+		        putKnight(row,col,level);
+		        return (solveH(row+2,col+1,level+1)||
+			    solveH(row-2,col+1,level+1)||
+			    solveH(row+2,col-1,level+1)||
+			    solveH(row-2,col-1,level+1)||
+			    solveH(row+1,col+2,level+1)||
+			    solveH(row-1,col+2,level+1)||
+			    solveH(row+1,col-2,level+1)||
+			    solveH(row-1,col-2,level+1));
+	        }
+	        else{
+		        for(int i=0;i<board.length;i++)
+		            for(int j=0;j<board[i].length;j++)
+			        {
+			            board[i][j]=0;
+			        }
+		        return false;
+	        }
 	    }
-	    else{
-		for(int i=0;i<board.length;i++)
-		    for(int j=0;j<board[i].length;j++)
-			{
-			    board[i][j]=0;
-			}
-		return false;
-	    }
-	}
     } // level is the # of the knight
     
     public void putKnight(int x, int y, int level){
 	    board[x][y] = level;
     }
+    
     public int[][] goodSpots(int x, int y){
         int[][] spots = {{2,1},{2,-1},{-2,1},{-2,-1},{1,2},{1,-2},{-1,2},{-1,-2}};
 	    int[][] ret = new int[8][2];
