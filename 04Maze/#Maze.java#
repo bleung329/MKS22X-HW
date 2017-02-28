@@ -18,7 +18,9 @@ public class Maze{
     public Maze(String filename){
         //COMPLETE CONSTRUCTOR
 	String thing = "";
+	int counter = 0;
 	try{
+	    //This part reads the file and gets it into a string
 	    File file = new File(filename);
 	    Scanner scanner = new Scanner(file);
 	    int lineNum = 1;
@@ -29,7 +31,8 @@ public class Maze{
 		if(debug){System.out.println(bloop);}
 	    }
 	    if(debug){System.out.println(thing)};
-	    
+	    //This part gets the string into the array/map
+	    while(
 	}catch(Exception e){
 	    System.out.println("Are you sure "+filename+" exists?");
 	}
