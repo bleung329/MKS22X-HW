@@ -17,39 +17,39 @@ public class Maze{
     */
     public Maze(String filename){
         //COMPLETE CONSTRUCTOR
-	String thing = "";
-	int ctrx = 0;
-	int ctry = 0;
-	String rawthing = "";
-	try{
-	    // This part gets a String of the thing
-	    File file = new File(filename);
-	    Scanner scanner = new Scanner(file);
-	    int lineNum = 1;
-	    while(scanner.hasNextLine()){
-		String bloop = scanner.nextLine();
-		rawthing+=bloop;
-		thing+=bloop+"\n";
-		lineNum+=1;
-		if(debug){System.out.println(bloop);}
-	    }
-	    //This part puts the string into an array
-	    if(debug){System.out.println(thing);}
-	    while (!(thing.charAt(ctrx)=='\n')){ctrx+=1;}
-	    if(debug){System.out.println(ctrx);}
-	    ctry = (thing.length()/ctrx)-1;
-	    if(debug){System.out.println(ctry);}
-	    maze = new char[ctry][ctrx];
-	    int counter = 0;
-	    for(int i=0;i<ctry;i++){
-	        for(int j=0;j<ctrx;j++){
-	            maze[i][j] = rawthing.charAt(counter);
-		    counter+=1;
-	        }
-	    }
-	}catch(Exception e){
-	    System.out.println("Something went wrong. Are you sure "+filename+" exists?");
-	}
+		String thing = "";
+		int ctrx = 0;
+		int ctry = 0;
+		String rawthing = "";
+		try{
+			// This part gets a String of the thing
+			File file = new File(filename);
+			Scanner scanner = new Scanner(file);
+			int lineNum = 1;
+			while(scanner.hasNextLine()){
+			String bloop = scanner.nextLine();
+			rawthing+=bloop;
+			thing+=bloop+"\n";
+			lineNum+=1;
+			if(debug){System.out.println(bloop);}
+			}
+			//This part puts the string into an array
+			if(debug){System.out.println(thing);}
+			while (!(thing.charAt(ctrx)=='\n')){ctrx+=1;}
+			if(debug){System.out.println(ctrx);}
+			ctry = (thing.length()/ctrx)-1;
+			if(debug){System.out.println(ctry);}
+			maze = new char[ctry][ctrx];
+			int counter = 0;
+			for(int i=0;i<ctry;i++){
+				for(int j=0;j<ctrx;j++){
+					maze[i][j] = rawthing.charAt(counter);
+				counter+=1;
+				}
+			}
+		}catch(Exception e){
+			System.out.println("Something went wrong. Are you sure "+filename+" exists?");
+		}
     }
 
     public void setAnimate(boolean b){
