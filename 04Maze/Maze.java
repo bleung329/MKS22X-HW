@@ -20,6 +20,7 @@ public class Maze{
 	String thing = "";
 	int ctrx = 0;
 	int ctry = 0;
+	String rawthing = "";
 	try{
 	    // This part gets a String of the thing
 	    File file = new File(filename);
@@ -27,6 +28,7 @@ public class Maze{
 	    int lineNum = 1;
 	    while(scanner.hasNextLine()){
 		String bloop = scanner.nextLine();
+		rawthing+=bloop;
 		thing+=bloop+"\n";
 		lineNum+=1;
 		if(debug){System.out.println(bloop);}
@@ -38,13 +40,15 @@ public class Maze{
 	    ctry = (thing.length()/ctrx)-1;
 	    if(debug){System.out.println(ctry);}
 	    maze = new char[ctry][ctrx];
-	    for(int i=0;i<ctry;i++;){
-	        for(int j=0;j<ctrx;j++;){
-	            maze[i][j] = 
+	    int counter = 0;
+	    for(int i=0;i<ctry;i++){
+	        for(int j=0;j<ctrx;j++){
+	            maze[i][j] = rawthing.charAt(counter);
+		    counter+=1;
 	        }
 	    }
 	}catch(Exception e){
-	    System.out.println("Are you sure "+filename+" exists?");
+	    System.out.println("Something went wrong. Are you sure "+filename+" exists?");
 	}
     }
 
@@ -55,7 +59,18 @@ public class Maze{
     public void clearTerminal(){
         System.out.println("\033[2J");
     }
-    
+	
+    public String boord(){
+	String ret = "Y->\n";
+	for (int i = 0; i<maze.length;i++){
+	    for (int j = 0;j<maze[i].length;j++){
+		ret+=""+maze[i][j]+"\t";
+	    }
+	    ret+="\n";
+	}
+	System.out.println(ret);
+	return ret;
+    }
 
     /*Wrapper Solve Function
       Since the constructor exits when the file is not found or is missing an E or S, we can assume it exists.
