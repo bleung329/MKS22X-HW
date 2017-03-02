@@ -18,7 +18,10 @@ public class Maze{
     public Maze(String filename){
         //COMPLETE CONSTRUCTOR
 	String thing = "";
+	int ctrx = 0;
+	int ctry = 0;
 	try{
+	    // This part gets a String of the thing
 	    File file = new File(filename);
 	    Scanner scanner = new Scanner(file);
 	    int lineNum = 1;
@@ -28,7 +31,12 @@ public class Maze{
 		lineNum+=1;
 		if(debug){System.out.println(bloop);}
 	    }
-	    if(debug){System.out.println(thing)};
+	    if(debug){System.out.println(thing);}
+	    while (!(thing.charAt(ctrx)=='\n')){ctrx+=1;}
+	    if(debug){System.out.println(ctrx);}
+	    ctry = (thing.length()/ctrx)-1;
+	    if(debug){System.out.println(ctry);}
+	    maze = new char[ctry][ctrx];
 	    
 	}catch(Exception e){
 	    System.out.println("Are you sure "+filename+" exists?");
