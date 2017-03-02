@@ -31,13 +31,18 @@ public class Maze{
 		lineNum+=1;
 		if(debug){System.out.println(bloop);}
 	    }
+	    //This part puts the string into an array
 	    if(debug){System.out.println(thing);}
 	    while (!(thing.charAt(ctrx)=='\n')){ctrx+=1;}
 	    if(debug){System.out.println(ctrx);}
 	    ctry = (thing.length()/ctrx)-1;
 	    if(debug){System.out.println(ctry);}
 	    maze = new char[ctry][ctrx];
-	    
+	    for(int i=0;i<ctry;i++;){
+	        for(int j=0;j<ctrx;j++;){
+	            maze[i][j] = 
+	        }
+	    }
 	}catch(Exception e){
 	    System.out.println("Are you sure "+filename+" exists?");
 	}
