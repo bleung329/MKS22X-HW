@@ -4,6 +4,7 @@ import java.io.*;
 public class Maze{
     private char[][] maze;
     private boolean animate;
+    private int 
     private boolean debug = true;
     /*Constructor loads a maze text file, and sets animate to false by default.
       1. The file contains a rectangular ascii maze, made with the following 4 characters:
@@ -74,7 +75,7 @@ public class Maze{
 
     /*Wrapper Solve Function
       Since the constructor exits when the file is not found or is missing an E or S, we can assume it exists.
-    *//*
+    */
     public void solve(){
             int startx=0,starty=0;
             //Initialize startx and starty with the location of the S. 
