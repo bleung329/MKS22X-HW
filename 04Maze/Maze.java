@@ -3,7 +3,7 @@ import java.io.*;
 
 public class Maze{
     private char[][] maze;
-    private boolean animate = true;
+    private boolean animate = false;
     private int startX, startY;
     private boolean debug = false;
     /*Constructor loads a maze text file, and sets animate to false by default.

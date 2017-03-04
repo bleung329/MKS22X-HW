@@ -6,7 +6,7 @@ public class Driver{
 		try{
 			f = new Maze(args[0]);
 			f.clearTerminal();
-			f.setAnimate(true);
+			f.setAnimate(false);
 			f.solve();
 			f.clearTerminal();
 			System.out.println(f);
