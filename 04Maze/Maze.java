@@ -3,9 +3,9 @@ import java.io.*;
 
 public class Maze{
     private char[][] maze;
-    private boolean animate;
+    private boolean animate = true;
     private int startX, startY;
-    private boolean debug = true;
+    private boolean debug = false;
     /*Constructor loads a maze text file, and sets animate to false by default.
       1. The file contains a rectangular ascii maze, made with the following 4 characters:
       '#' - locations that cannot be moved onto
@@ -38,7 +38,7 @@ public class Maze{
 			//This part puts the string into an array
 			if(debug){System.out.println(thing);}
 			while (!(thing.charAt(ctrx)=='\n')){ctrx+=1;}
-			ctry = (thing.length()/ctrx)-1;
+			ctry = (thing.length()/ctrx);
 			maze = new char[ctry][ctrx];
 			for(int i=0;i<ctry;i++){
 				for(int j=0;j<ctrx;j++){
@@ -69,14 +69,13 @@ public class Maze{
 	String ret = "Y->\n";
 	for (int i = 0; i<maze.length;i++){
 	    for (int j = 0;j<maze[i].length;j++){
-		ret+=""+maze[i][j]+"\t";
+		ret+=""+maze[i][j]+" ";
 	    }
 	    ret+="\n";
 	}
-	System.out.println(ret);
+	//System.out.println(ret);
 	return ret;
     }
-
     /*Wrapper Solve Function
       Since the constructor exits when the file is not found or is missing an E or S, we can assume it exists.
     */
@@ -89,9 +88,15 @@ public class Maze{
             //return solve(startx,starty);
     }
 	public boolean solveH(int x, int y){
-		char here = maze[x][y];
-		
-		switch(here){
+		try{
+			if(animate){
+				System.out.println(this);
+				wait(20);
+			}
+		}
+		catch(Exception e){
+		}
+		switch(maze[x][y]){
 			case '#':
 				return false;
 			case ' ':
@@ -112,23 +117,9 @@ public class Maze{
 			default:
 				return false;
 			/*
-			If the path returns true, you want to set it to @
-			
-		*/
-		}/*
-		if (solveH(x+1,y)){
-			
+			If the path returns true, you want to set it to @	
+			*/
 		}
-		if (solveH(x-1,y)){
-			
-		}
-		if (solveH(x,y+1)){
-			
-		}
-		if (solveH(x,y-1)){
-			
-		}*/
-		
 	}
 		
     /*	
@@ -143,15 +134,9 @@ public class Maze{
         The S is replaced with '@' but the 'E' is not.
         All visited spots that were not part of the solution are changed to '.'
         All visited spots that are part of the solution are changed to '@'
-      *//*
-    private boolean solve(int x, int y){
-        if(animate){
-            System.out.println(this);
-            wait(20);
-        }
-
-        //COMPLETE SOLVE
-        return false; //so it compiles
-	*/
+      */
+    public String toString(){
+		return boord();
+	}
 }
 
