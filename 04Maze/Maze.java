@@ -4,7 +4,7 @@ import java.io.*;
 public class Maze{
     private char[][] maze;
     private boolean animate;
-    private int 
+    private int startX, startY;
     private boolean debug = true;
     /*Constructor loads a maze text file, and sets animate to false by default.
       1. The file contains a rectangular ascii maze, made with the following 4 characters:
@@ -38,16 +38,20 @@ public class Maze{
 			//This part puts the string into an array
 			if(debug){System.out.println(thing);}
 			while (!(thing.charAt(ctrx)=='\n')){ctrx+=1;}
-			if(debug){System.out.println(ctrx);}
 			ctry = (thing.length()/ctrx)-1;
-			if(debug){System.out.println(ctry);}
 			maze = new char[ctry][ctrx];
 			for(int i=0;i<ctry;i++){
 				for(int j=0;j<ctrx;j++){
 					maze[i][j] = rawthing.charAt(counter);
+					if (rawthing.charAt(counter)=='S'){
+						startY = j;
+						startX = i;
+					}
 				counter+=1;
 				}
-			}//U know what theres probably a faster way to do all this stuff
+			}
+			if(debug){System.out.println(ctrx+","+ctry);}
+			if(debug){System.out.println("S is at: "+startX+","+startY);}//U know what theres probably a faster way to do all this stuff
 		}catch(Exception e){
 			System.out.println("Something went wrong. Are you sure "+filename+" exists?");
 		}
@@ -76,14 +80,58 @@ public class Maze{
     /*Wrapper Solve Function
       Since the constructor exits when the file is not found or is missing an E or S, we can assume it exists.
     */
-    public void solve(){
-            int startx=0,starty=0;
+    public boolean solve(){
+            maze[startX][startY] = ' ';
+			//int startx=0,starty=0;
             //Initialize startx and starty with the location of the S. 
-            maze[startx][starty] = ' ';//erase the S, and start solving!
+            //maze[startx][starty] = ' ';//erase the S, and start solving!
+			return solveH(startX,startY);
             //return solve(startx,starty);
     }
-
-    /*
+	public boolean solveH(int x, int y){
+		char here = maze[x][y];
+		
+		switch(here){
+			case '#':
+				return false;
+			case ' ':
+				maze[x][y] = '.';
+				if (solveH(x+1,y)||
+					solveH(x-1,y)||
+					solveH(x,y+1)||
+					solveH(x,y-1)){
+					maze[x][y] = '@';
+					return true;
+				}else{	
+					return false;
+				}
+			case '.':
+				return false;
+			case 'E':
+				return true;
+			default:
+				return false;
+			/*
+			If the path returns true, you want to set it to @
+			
+		*/
+		}/*
+		if (solveH(x+1,y)){
+			
+		}
+		if (solveH(x-1,y)){
+			
+		}
+		if (solveH(x,y+1)){
+			
+		}
+		if (solveH(x,y-1)){
+			
+		}*/
+		
+	}
+		
+    /*	
       Recursive Solve function:
 
       A solved maze has a path marked with '@' from S to E.
