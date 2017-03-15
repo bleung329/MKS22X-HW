@@ -119,7 +119,7 @@ public class USACO{
 		return 3;
 	}
 	public static void main(String[] args){
-		System.out.println(USACO.bronze("makelake.in"));
+		System.out.println(USACO.bronze(args[0]));
 	}
     //End of the silver
 }
