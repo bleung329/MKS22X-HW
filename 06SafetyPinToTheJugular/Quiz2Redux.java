@@ -16,17 +16,14 @@ public class Quiz2Redux{
 			words.add(""+s.charAt(position));
 			for (int i = 1; i<placehold; i++){
 				words.add(words.get(i) + words.get(placehold));
-			}
-			
+			}	
 		}
 		combinationH(s,words,position-1);
 	}
-	public static void p(Object a){
-		System.out.println(a);
-	}
+	/*
 	public static void main(String[] args){
 		System.out.println(Quiz2Redux.combinations("abc"));
 	}
-	
+	*/
 	
 }
