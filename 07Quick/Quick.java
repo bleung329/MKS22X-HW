@@ -17,17 +17,6 @@ public class Quick
 		System.out.println();
     }
 
-	/*
-    public static void shuffle( int[] arrr ) {
-		int temp;
-		int swapPos;
-		for(int i = 0; i < arrr.length; i++){
-			temp = arrr[i];
-			swapPos = i + (int)((arrr.length - i) * Math.random());
-			swap(i,swapPos,arrr);
-		}
-    }
-	*/
     public static int[] builder(int s, int mxVal) {
 		int[] retArr = new int[s];
 		for(int i = 0; i < retArr.length; i++){
