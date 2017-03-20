@@ -63,12 +63,13 @@ public class Quick
 		}
     }
 
-    /*
+    
     public static void main( String[] args ) 
     {
-		int[]ary = { 2, 10, 15, 23, 0,  5};
+		int[]ary = { 2, 2, 2, 2, 2, 2, 2, 2, 10, 15, 23, 0,  5};
 		System.out.println(quickselect(ary,3));
+		Quick.printArr(Quick.sortit(ary, 0, ary.length - 1));
     }
-	*/
+	
 	
 }
