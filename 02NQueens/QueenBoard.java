@@ -1,7 +1,10 @@
 import java.util.*;
 public class QueenBoard{
 	public int[][] board;
-	
+		
+	public String name(){
+		return "Leung,Brian,6";
+	}
 	public QueenBoard(int n){
 		board = new int[n][n];
 	}

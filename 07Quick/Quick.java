@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Quick
 {
 	public static String name(){
@@ -38,6 +40,28 @@ public class Quick
 		swap (r, s, arr);
 		return s;
     }
+	public static void quickDutch(int[] arr){
+		
+	}
+	public static int[] dutchyH(int[] arr, int lt, int gt, int i){
+		while (i<=gt){
+			if (arr[i] == arr[0]){
+				i++;
+			}
+			else{
+				if (arr[i] < arr[0]){
+					swap(lt,i,arr);
+					lt++;
+					i++;
+				}
+				else{
+					swap(gt,i,arr);
+					gt--;
+				}
+			}
+		}
+		return arr;
+	}		
 	
     public static int quickselect(int[] data, int k){
 		//do i trust kth?
@@ -62,13 +86,21 @@ public class Quick
 			}
 		}
     }
+	public static int[] randArray(int length, int range){
+		int[] array = new int[length];
+		for (int i = 0; i<length-1; i++){
+			Random rand = new Random();
+			array[i] = rand.nextInt(range);
+		}
+		return array;
+	}
 
     
     public static void main( String[] args ) 
     {
-		int[]ary = { 2, 2, 2, 2, 2, 2, 2, 2, 10, 15, 23, 0,  5};
-		System.out.println(quickselect(ary,3));
-		Quick.printArr(Quick.sortit(ary, 0, ary.length - 1));
+		int[]ary = Quick.randArray(500,100);
+		Quick.printArr(dutchyH(ary,0,ary.length-1,0));
+		//Quick.printArr(Quick.sortit(ary, 0, ary.length - 1));
     }
 	
 	

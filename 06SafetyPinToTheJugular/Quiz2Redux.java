@@ -24,10 +24,9 @@ public class Quiz2Redux{
 		}
 		combinationH(s,words,position-1);
 	}
-	/*
+	
 	public static void main(String[] args){
-		System.out.println(Quiz2Redux.combinations("abc"));
+		System.out.println(Quiz2Redux.combinations("ab!"));
 	}
-	*/
 	
 }
