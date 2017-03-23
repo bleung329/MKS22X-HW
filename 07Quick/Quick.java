@@ -98,6 +98,11 @@ public class Quick
 	
 	//HERE IS MERGESORT
 	public static int[] mergesort(int[] arr){
+		
+	}
+	
+	public static int[] merge(int[] arr1, int[] arr2){
+		int p1,p2 = 0;
 	}
 	//END MERGESORT
 
