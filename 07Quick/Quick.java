@@ -97,21 +97,43 @@ public class Quick
     }
 	
 	//HERE IS MERGESORT
-	public static int[] mergesort(int[] arr){
-		
-	}
+	//public static int[] mergesort(int[] arr){}
 	
 	public static int[] merge(int[] arr1, int[] arr2){
-		int p1,p2 = 0;
+		int p1 = 0;
+		int p2 = 0;
+		int[] retArr = new int[arr1.length+arr2.length];
+		int out = -1;
+		for (int i = 0; i<retArr.length-1; i++){
+			printArr(retArr);
+			System.out.println("p1 = "+p1+"\np2 = "+p2);	
+			if ((p2 >= arr2.length)||(p1 >= arr1.length)){
+				out = i;
+				break;
+			}
+			if (arr1[p1]>=arr2[p2]){
+				retArr[i] = arr2[p2];
+				p2++;
+			}else{
+				retArr[i] = arr1[p1];
+				p1++;
+			}
+		}
+		
+		printArr(retArr);
+		return retArr;
 	}
 	//END MERGESORT
 
     
     public static void main( String[] args ) 
     {
-		int[]ary = Quick.randArray(500,100);
-		Quick.printArr(dutchyH(ary,0,ary.length-1,0));
+		//int[]ary = Quick.randArray(500,100);
+		//Quick.printArr(dutchyH(ary,0,ary.length-1,0));
 		//Quick.printArr(Quick.sortit(ary, 0, ary.length - 1));
+		int[] ar1 = {1,5,7,9,14};
+		int[] ar2 = {3,6,9,20,100};
+		Quick.printArr(Quick.merge(ar1,ar2));
     }
 	
 	
