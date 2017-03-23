@@ -26,6 +26,14 @@ public class Quick
 		}
 		return retArr;
     }
+	public static int[] randArray(int length, int range){
+		int[] array = new int[length];
+		for (int i = 0; i<length-1; i++){
+			Random rand = new Random();
+			array[i] = rand.nextInt(range);
+		}
+		return array;
+	}
 	//HERE IS THE PARTITION FUNCTION
     public static int part(int[] arr, int l, int r, int pivPos){
 		int piv = arr[pivPos];
@@ -61,7 +69,8 @@ public class Quick
 			}
 		}
 		return arr;
-	}		
+	}
+	
 	
     public static int quickselect(int[] data, int k){
 		//do i trust kth?
@@ -86,14 +95,11 @@ public class Quick
 			}
 		}
     }
-	public static int[] randArray(int length, int range){
-		int[] array = new int[length];
-		for (int i = 0; i<length-1; i++){
-			Random rand = new Random();
-			array[i] = rand.nextInt(range);
-		}
-		return array;
+	
+	//HERE IS MERGESORT
+	public static int[] mergesort(int[] arr){
 	}
+	//END MERGESORT
 
     
     public static void main( String[] args ) 

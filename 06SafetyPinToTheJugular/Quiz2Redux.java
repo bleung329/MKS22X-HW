@@ -26,7 +26,7 @@ public class Quiz2Redux{
 	}
 	
 	public static void main(String[] args){
-		System.out.println(Quiz2Redux.combinations("ab!"));
+		System.out.println(Quiz2Redux.combinations("kji"));
 	}
 	
 }
