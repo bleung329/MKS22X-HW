@@ -1,7 +1,7 @@
-import java.util.*;
+																																																																																																																																		import java.util.*;
 public class QueenBoard{
 	public int[][] board;
-		
+	public int soulCount = -1;
 	public String name(){
 		return "Leung,Brian,6";
 	}
@@ -9,28 +9,58 @@ public class QueenBoard{
 		board = new int[n][n];
 	}
 	
-	public void solve(int n){
-		solveH(n);
+	public boolean solve(){
+		return solveH(0);
 	}
-	
-	/*public boolean countSol(){
+	//Counting stuff
+	public int getSolutionCount(){
+    	return soulCount;
+    }
+	public int countSolutions(){
+		soulCount = 0;
+		int it = 0;
+		int it2 = 0;
+		while (it2<board.length){
+			putQueen(it,it2);
+			if(solveH(it+1)){
+				clear();
+				soulCount+=1;
+			}else{
+				clear();
+			}
+			it2++;
+		}
+		return soulCount;
 	}
-	
-	public String getCount(){
-	}*/
+    /**toString
+     *and all nunbers that represent queens are replaced with 'Q' 
+     *all others are displayed as underscores '_'
+     */
+    public String toString(){
+    	return boord();
+    }
 	
 	//HELPFUL FUNCTIONS
 	private boolean solveH(int x){
-		if (x>=board.length){
+		if (x==board.length){
 			return true;
 		}else{
-			if(){
-			}else{
+			for (int i=0; i<board.length; i++){
+				if (isGood(x,i)){
+					putQueen(x,i);
+					if (solveH(x+1)){
+						return true;
+					}else{
+						remQueen(x,i);
+					}
+				}
 				
 			}
-			return solveH(x+1);
+			return false;
 		}
-		return false;
+	}
+	public boolean isGood(int x, int y){
+		return board[x][y]==0;
 	}
 	public void putQueen(int x, int y){
 		for (int i = 0; i<board.length; i++){
@@ -70,18 +100,31 @@ public class QueenBoard{
 			}
 		}
 	}
+	//Clear a board
+	public void clear(){
+		for (int i = 0;i<board.length;i++){
+			for (int j=0; j<board.length; j++){
+				board[i][j] = 0;
+			}
+		}
+	}
 	public String board(){
 		String ret = "";
 		for (int i = 0; i<this.board.length; i++){ret+=Arrays.toString(this.board[i])+"\n";}
 		return ret;
 	}
+	public String boord(){
+		String ret = "Y->\n";
+		for (int i = 0; i<board.length;i++){
+			for (int j = 0;j<board[i].length;j++){
+				ret+=""+board[i][j]+"\t";
+			}
+			ret+="\n";
+		}
+		return ret;
+	}/*
 	public static void main(String[] args){
-		QueenBoard slay = new QueenBoard(6);
-		//System.out.println(slay.solve(6));
-		slay.putQueen(3,2);
-		slay.putQueen(2,4);
-		System.out.println(slay.board());
-		slay.remQueen(3,2);
-		System.out.println(slay.board());
-	}
+		QueenBoard slay = new QueenBoard(5);
+		System.out.println(slay.countSolutions());
+	}*/
 }
