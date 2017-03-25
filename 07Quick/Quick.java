@@ -34,6 +34,11 @@ public class Quick
 		}
 		return array;
 	}
+	public static int[] splitL(int[] arr){
+		
+	}
+	public static int[] splitR(int[] arr){
+	}
 	//HERE IS THE PARTITION FUNCTION
     public static int part(int[] arr, int l, int r, int pivPos){
 		int piv = arr[pivPos];
@@ -97,7 +102,10 @@ public class Quick
     }
 	
 	//HERE IS MERGESORT
-	//public static int[] mergesort(int[] arr){}
+	public static int[] mergesort(int[] arr){
+		
+		
+	}
 	
 	public static int[] merge(int[] arr1, int[] arr2){
 		int p1 = 0;
