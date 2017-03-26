@@ -34,11 +34,7 @@ public class Quick
 		}
 		return array;
 	}
-	public static int[] splitL(int[] arr){
-		
-	}
-	public static int[] splitR(int[] arr){
-	}
+	
 	//HERE IS THE PARTITION FUNCTION
     public static int part(int[] arr, int l, int r, int pivPos){
 		int piv = arr[pivPos];
