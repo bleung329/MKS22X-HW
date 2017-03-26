@@ -87,9 +87,12 @@ public class Merge{
 		System.out.print("\n");
     } 	
 	//END MERGESORT
+	/*
 	public static void main(String[] args){
 		int[] array = Merge.randArray(100000,1000);
 		Merge.mergesort(array);
 		Merge.printArr(array);
+		System.print("Done");
 	}
+	*/
 }
