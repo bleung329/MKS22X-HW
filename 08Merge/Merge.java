@@ -89,10 +89,11 @@ public class Merge{
 	//END MERGESORT
 	/*
 	public static void main(String[] args){
-		int[] array = Merge.randArray(100000,1000);
+		int[] array = Merge.randArray(100000,1);
 		Merge.mergesort(array);
 		Merge.printArr(array);
-		System.print("Done");
+		//System.print("Done");
 	}
 	*/
+	
 }
