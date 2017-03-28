@@ -1,4 +1,4 @@
-																																																																																																																																		import java.util.*;
+import java.util.*;
 public class QueenBoard{
 	public int[][] board;
 	public int soulCount = -1;
@@ -122,9 +122,9 @@ public class QueenBoard{
 			ret+="\n";
 		}
 		return ret;
-	}/*
+	}
 	public static void main(String[] args){
-		QueenBoard slay = new QueenBoard(5);
-		System.out.println(slay.countSolutions());
-	}*/
+		QueenBoard slay = new QueenBoard(2);
+		System.out.println(slay.solve());
+	}
 }

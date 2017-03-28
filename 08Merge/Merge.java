@@ -87,6 +87,7 @@ public class Merge{
 		System.out.print("\n");
     } 	
 	//END MERGESORT
+	//Tested sorted, unsorted, non dupe, duped, all same, and random
 	/*
 	public static void main(String[] args){
 		int[] array = Merge.randArray(100000,1);
