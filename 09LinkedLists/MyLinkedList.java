@@ -18,7 +18,7 @@ public class MyLinkedList{
 			next = ref;
 		}
 	}
-	
+	//CHANGING FUNCTIONS
 	public void add(int value){
 		if (start == null){
 			start = new LNode(value);
@@ -39,6 +39,9 @@ public class MyLinkedList{
 	}
 	
 	public int set(int index, int newVal){
+		if (index>size){
+			throw new IllegalArgumentException();
+		}
 		LNode cdr = start;
 		for (int i = 0; i<index; i++){
 			cdr = cdr.next;
@@ -49,17 +52,48 @@ public class MyLinkedList{
 		
 	}
 	
+	public int remove(int index){
+		int ret = 0;
+		LNode cdr = start;
+		if (index>size){
+			throw new IllegalArgumentException();
+		}
+		if (index == 0) start = start.next;
+		else{
+			for (int i = 0; i<index-1; i++){
+				cdr = cdr.next;
+			}
+			LNode first = cdr;
+			cdr = cdr.next;
+			ret = cdr.value;
+			first.next = cdr;
+		}	
+		return ret;
+	}
+	
 	//ACCESS THINGS
 	public int size(){
 		return size+0;
 	}
 	
 	public int get(int index){
+		if (index>size){
+			throw new IllegalArgumentException();
+		}
 		LNode cdr = start;
 		for (int i = 0; i<index; i++){
 			cdr = cdr.next;
 		}
 		return cdr.value;
+	}
+	
+	public int indexOf(int target){
+		LNode cdr = start;
+		for (int i = 0; i<size; i++){
+			if (cdr.value==target) return i;
+			else cdr = cdr.next;
+		}
+		return -1;
 	}
 	
 	public String toString(){
@@ -79,6 +113,7 @@ public class MyLinkedList{
 		}
 		return ret+"]";
 	}
+	//END OF CODE, START OF MAIN
 	public static void main(String[] args){
 		MyLinkedList Link = new MyLinkedList();
 		Link.add(0);
@@ -88,7 +123,8 @@ public class MyLinkedList{
 		Link.add(4);
 		Link.add(5);
 		System.out.println(Link.set(2,100));
-		
+		System.out.println("100 is at "+Link.indexOf(100));
+		System.out.println("I removed: "+Link.remove(0));
 		System.out.println(Link);
 		System.out.println(Link.get(3));
 	}
