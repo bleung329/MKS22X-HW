@@ -1,33 +1,35 @@
 public class MyLinkedList{
+	
 	LNode start;
 	int size = 0;
 	
 	public MyLinkedList(){
+		//Theres nothing in here just walk away
 	}
+	
 	//Here is the LNode
 	private class LNode{
 		int value;
 		LNode next = null;
-		//Only value
-		public LNode(int val){
-			value = val;
-		}
+		
+		//tbh this is the only constructor we need//
 		
 		public LNode(int val, LNode ref){
 			value = val;
 			next = ref;
 		}
 	}
+	
 	//CHANGING FUNCTIONS
 	public void add(int value){
 		if (start == null){
-			start = new LNode(value);
+			start = new LNode(value,null);
 		}
 		else{
 			LNode cdr = start;
 			for (int i = 0; i < size; i++){
 				if (cdr.next == null){
-					cdr.next = new LNode(value);
+					cdr.next = new LNode(value,null);
 					break;
 				}
 				else{
@@ -53,11 +55,11 @@ public class MyLinkedList{
 	}
 	
 	public int remove(int index){
-		int ret = 0;
-		LNode cdr = start;
 		if (index>size){
 			throw new IllegalArgumentException();
 		}
+		int ret = 0;
+		LNode cdr = start;
 		if (index == 0){
 			start = start.next;
 		}
