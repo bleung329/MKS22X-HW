@@ -58,16 +58,21 @@ public class MyLinkedList{
 		if (index>size){
 			throw new IllegalArgumentException();
 		}
-		if (index == 0) start = start.next;
+		if (index == 0){
+			start = start.next;
+		}
 		else{
 			for (int i = 0; i<index-1; i++){
+				//System.out.println(cdr.value);
 				cdr = cdr.next;
+				//System.out.println(cdr.value);
 			}
 			LNode first = cdr;
 			cdr = cdr.next;
 			ret = cdr.value;
-			first.next = cdr;
-		}	
+			first.next = cdr.next;
+		}
+		size--;		
 		return ret;
 	}
 	
@@ -117,15 +122,17 @@ public class MyLinkedList{
 	public static void main(String[] args){
 		MyLinkedList Link = new MyLinkedList();
 		Link.add(0);
+		/*
 		Link.add(1);
 		Link.add(2);
 		Link.add(3);
 		Link.add(4);
 		Link.add(5);
-		System.out.println(Link.set(2,100));
-		System.out.println("100 is at "+Link.indexOf(100));
+		*/
+		//System.out.println(Link.set(2,100));
+		//System.out.println("100 is at "+Link.indexOf(100));
 		System.out.println("I removed: "+Link.remove(0));
 		System.out.println(Link);
-		System.out.println(Link.get(3));
+		//System.out.println(Link.get(3));
 	}
 }
