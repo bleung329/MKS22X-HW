@@ -122,7 +122,9 @@ public class MyLinkedList{
 	}
 	
 	//END OF CODE, START OF MAIN
+	/*
 	public static void main(String[] args){
+		IT ONY SIEEMS TO WORK
 		MyLinkedList Link = new MyLinkedList();
 		Link.add(0);
 		
@@ -137,5 +139,5 @@ public class MyLinkedList{
 		System.out.println("I removed: "+Link.remove(2));
 		System.out.println(Link);
 		//System.out.println(Link.get(3));
-	}
+	}*/
 }
