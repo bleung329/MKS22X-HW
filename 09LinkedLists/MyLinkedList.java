@@ -5,6 +5,7 @@ public class MyLinkedList{
 	
 	public MyLinkedList(){
 		//Theres nothing in here just walk away
+		2+2;
 	}
 	
 	//Here is the LNode
@@ -120,19 +121,34 @@ public class MyLinkedList{
 		}
 		return ret+"]";
 	}
+	
 	//END OF CODE, START OF MAIN
+	/*
 	public static void main(String[] args){
+		IT ONY SIEEMS TO WORK
 		MyLinkedList Link = new MyLinkedList();
 		Link.add(0);
+<<<<<<< HEAD
+=======
+		
+>>>>>>> 28a70f5639891acffc48349df20eb098afdb03da
 		Link.add(1);
-		Link.add(2);
+		Link.add(-2000);
 		Link.add(3);
 		Link.add(4);
+<<<<<<< HEAD
 		Link.add(5);	
 		//System.out.println(Link.set(2,100));
 		//System.out.println("100 is at "+Link.indexOf(100));
 		System.out.println("I removed: "+Link.remove(5));
+=======
+		Link.add(5);
+		
+		//System.out.println(Link.set(2,100));
+		//System.out.println("100 is at "+Link.indexOf(100));
+		System.out.println("I removed: "+Link.remove(2));
+>>>>>>> 28a70f5639891acffc48349df20eb098afdb03da
 		System.out.println(Link);
 		//System.out.println(Link.get(3));
-	}
+	}*/
 }
