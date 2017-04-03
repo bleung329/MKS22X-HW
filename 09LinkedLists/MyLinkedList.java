@@ -124,16 +124,14 @@ public class MyLinkedList{
 	public static void main(String[] args){
 		MyLinkedList Link = new MyLinkedList();
 		Link.add(0);
-		/*
 		Link.add(1);
 		Link.add(2);
 		Link.add(3);
 		Link.add(4);
-		Link.add(5);
-		*/
+		Link.add(5);	
 		//System.out.println(Link.set(2,100));
 		//System.out.println("100 is at "+Link.indexOf(100));
-		System.out.println("I removed: "+Link.remove(0));
+		System.out.println("I removed: "+Link.remove(5));
 		System.out.println(Link);
 		//System.out.println(Link.get(3));
 	}
