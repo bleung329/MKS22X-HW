@@ -1,33 +1,42 @@
 public class MyLinkedList{
 	
-	LNode start;
+	LNode head;
+	LNode tail;
 	int size = 0;
 	
 	public MyLinkedList(){
-		//Theres nothing in here just walk away
-		2+2;
+		//Nothing here
 	}
 	
 	//Here is the LNode
 	private class LNode{
 		int value;
 		LNode next = null;
+		LNode prev = null;
 		
 		//tbh this is the only constructor we need//
 		
-		public LNode(int val, LNode ref){
+		public LNode(int val, LNode nexto, LNode previo){
+			prev = previo;
 			value = val;
-			next = ref;
+			next = nexto;
+		}
+		public LNode(int val, LNode nexto){
+			next = nexto;
+			value = val;
+		}
+		public String toString(){
+			return "["+value+"]";
 		}
 	}
 	
 	//CHANGING FUNCTIONS
 	public void add(int value){
-		if (start == null){
-			start = new LNode(value,null);
+		if (head == null){
+			head = new LNode(value,null);
 		}
 		else{
-			LNode cdr = start;
+			LNode cdr = head;
 			for (int i = 0; i < size; i++){
 				if (cdr.next == null){
 					cdr.next = new LNode(value,null);
@@ -45,7 +54,7 @@ public class MyLinkedList{
 		if (index>size){
 			throw new IllegalArgumentException();
 		}
-		LNode cdr = start;
+		LNode cdr = head;
 		for (int i = 0; i<index; i++){
 			cdr = cdr.next;
 		}
@@ -60,9 +69,9 @@ public class MyLinkedList{
 			throw new IllegalArgumentException();
 		}
 		int ret = 0;
-		LNode cdr = start;
+		LNode cdr = head;
 		if (index == 0){
-			start = start.next;
+			head = head.next;
 		}
 		else{
 			for (int i = 0; i<index-1; i++){
@@ -79,6 +88,30 @@ public class MyLinkedList{
 		return ret;
 	}
 	
+	//THE NEW REMOVE
+	public int remove(LNode Node){
+		
+		if (size<=1)
+		{
+			//Do something
+			return 2;
+		}
+		if (Node == head)
+		{
+			return 2;
+		}
+		if (Node == tail)
+		{
+			return 2;
+		}
+		else
+		{
+			(Node.prev).next = Node.next;
+			(Node.next).prev = Node.prev;
+			return Node.value;
+		}	
+	}
+	
 	//ACCESS THINGS
 	public int size(){
 		return size+0;
@@ -88,7 +121,7 @@ public class MyLinkedList{
 		if (index>size){
 			throw new IllegalArgumentException();
 		}
-		LNode cdr = start;
+		LNode cdr = head;
 		for (int i = 0; i<index; i++){
 			cdr = cdr.next;
 		}
@@ -96,7 +129,7 @@ public class MyLinkedList{
 	}
 	
 	public int indexOf(int target){
-		LNode cdr = start;
+		LNode cdr = head;
 		for (int i = 0; i<size; i++){
 			if (cdr.value==target) return i;
 			else cdr = cdr.next;
@@ -104,11 +137,27 @@ public class MyLinkedList{
 		return -1;
 	}
 	
+	//NEW HELPFUL FUNCTIONS
+	private LNode getNode(int index){
+		LNode cdr = head;
+		for (int i = 0; i<index; i++){
+			cdr = cdr.next;
+		}
+		return cdr;
+	}
+	private int insertAfter(LNode toba, LNode location){
+		return 1;
+	}
+	private int insertBefore(LNode toba, LNode location){
+		return 1;
+	}
+	
+	
 	public String toString(){
 		if (size==0) return "[]";
 		
 		String ret = "[";
-		LNode cdr = start;
+		LNode cdr = head;
 		for (int i = 0; i<size; i++){
 			if (i==0){
 				ret+=cdr.value;
@@ -122,33 +171,25 @@ public class MyLinkedList{
 		return ret+"]";
 	}
 	
-	//END OF CODE, START OF MAIN
-	/*
+	//END OF CODE, head OF MAIN
 	public static void main(String[] args){
-		IT ONY SIEEMS TO WORK
 		MyLinkedList Link = new MyLinkedList();
 		Link.add(0);
-<<<<<<< HEAD
-=======
-		
->>>>>>> 28a70f5639891acffc48349df20eb098afdb03da
 		Link.add(1);
 		Link.add(-2000);
 		Link.add(3);
 		Link.add(4);
-<<<<<<< HEAD
-		Link.add(5);	
+		Link.add(5);
 		//System.out.println(Link.set(2,100));
 		//System.out.println("100 is at "+Link.indexOf(100));
-		System.out.println("I removed: "+Link.remove(5));
-=======
+		System.out.println(Link.getNode(3));
+		System.out.println("I removed: "+Link.remove(Link.getNode(3)));
 		Link.add(5);
 		
 		//System.out.println(Link.set(2,100));
 		//System.out.println("100 is at "+Link.indexOf(100));
 		System.out.println("I removed: "+Link.remove(2));
->>>>>>> 28a70f5639891acffc48349df20eb098afdb03da
 		System.out.println(Link);
 		//System.out.println(Link.get(3));
-	}*/
+	}
 }
