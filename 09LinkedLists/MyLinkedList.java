@@ -1,5 +1,19 @@
 public class MyLinkedList{
 	
+	/*
+	Completed Functions:
+	YEP getNthNode
+	addAfter
+	YEP remove(LNode)
+	YEP toString
+	add(val)
+	YEP get
+	YEP set
+	indexOf
+	remove(i)
+	add(i,val)
+	*/
+	
 	LNode head;
 	LNode tail;
 	int size = 0;
@@ -50,59 +64,39 @@ public class MyLinkedList{
 		size++;
 	}
 	
-	public int set(int index, int newVal){
-		if (index>size){
+	public int set(int index, int newVal)
+	{
+		if (index>size)
+		{
 			throw new IllegalArgumentException();
 		}
-		LNode cdr = head;
-		for (int i = 0; i<index; i++){
-			cdr = cdr.next;
-		}
-		int ret = cdr.value;
-		cdr.value = newVal;
-		return ret;	
-		
+		int ret = getNthNode(index).value;
+		(getNthNode(index)).value = newVal;
+		return ret;
 	}
 	
 	public int remove(int index){
 		if (index>size){
 			throw new IllegalArgumentException();
 		}
-		int ret = 0;
-		LNode cdr = head;
-		if (index == 0){
-			head = head.next;
-		}
-		else{
-			for (int i = 0; i<index-1; i++){
-				//System.out.println(cdr.value);
-				cdr = cdr.next;
-				//System.out.println(cdr.value);
-			}
-			LNode first = cdr;
-			cdr = cdr.next;
-			ret = cdr.value;
-			first.next = cdr.next;
-		}
-		size--;		
-		return ret;
+		return remove(getNthNode(index))
 	}
 	
-	//THE NEW REMOVE
-	public int remove(LNode Node){
-		
+	//THE REMOVE
+	public int remove(LNode Node)
+	{	
 		if (size<=1)
 		{
 			//Do something
-			return 2;
+			return Node.value;
 		}
 		if (Node == head)
 		{
-			return 2;
+			return Node.value;
 		}
 		if (Node == tail)
 		{
-			return 2;
+			return Node.value;
 		}
 		else
 		{
@@ -127,6 +121,16 @@ public class MyLinkedList{
 		}
 		return cdr.value;
 	}
+	public LNode getNthNode(int index){
+		if (index>size){
+			throw new IllegalArgumentException();
+		}
+		LNode cdr = head;
+		for (int i = 0; i<index; i++){
+			cdr = cdr.next;
+		}
+		return cdr;
+	}
 	
 	public int indexOf(int target){
 		LNode cdr = head;
@@ -138,13 +142,6 @@ public class MyLinkedList{
 	}
 	
 	//NEW HELPFUL FUNCTIONS
-	private LNode getNode(int index){
-		LNode cdr = head;
-		for (int i = 0; i<index; i++){
-			cdr = cdr.next;
-		}
-		return cdr;
-	}
 	private int insertAfter(LNode toba, LNode location){
 		return 1;
 	}
@@ -182,9 +179,10 @@ public class MyLinkedList{
 		Link.add(5);
 		//System.out.println(Link.set(2,100));
 		//System.out.println("100 is at "+Link.indexOf(100));
-		System.out.println(Link.getNode(3));
-		System.out.println("I removed: "+Link.remove(Link.getNode(3)));
-		Link.add(5);
+		System.out.println(Link.get(3));
+		System.out.println(Link.set(3, 10000));
+		//System.out.println("I removed: "+Link.remove(Link.get(3)));
+		//Link.add(5);
 		
 		//System.out.println(Link.set(2,100));
 		//System.out.println("100 is at "+Link.indexOf(100));
@@ -192,4 +190,5 @@ public class MyLinkedList{
 		System.out.println(Link);
 		//System.out.println(Link.get(3));
 	}
+	
 }
