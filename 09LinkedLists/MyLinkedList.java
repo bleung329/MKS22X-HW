@@ -1,4 +1,4 @@
-                     public class MyLinkedList{
+public class MyLinkedList{
 	
 	/*
 	Whoops I kinda need to set the prev and next
@@ -48,7 +48,7 @@
 	//CHANGING FUNCTIONS
 	public void add(int value)
 	{
-		
+		LNode cdr = head;
 		if (head == null)
 		{
 			head = new LNode(value,null,null);
@@ -56,7 +56,6 @@
 		}
 		else
 		{
-			LNode cdr = head;
 			for (int i = 0; i < size; i++)
 			{
 				if (cdr.next == null)
@@ -70,6 +69,7 @@
 				}
 			}
 		}
+		tail = cdr.next;
 		size++;
 	}
 	//^I should have used getNthNode but at this point Im too afraid to.
@@ -170,23 +170,37 @@
 	}
 	
 	//NEW HELPFUL FUNCTIONS
-	private int insertAfter(LNode toba, LNode location){
-		return 1;
-	}
-	private int insertBefore(LNode toba, LNode location){
-		return 1;
+	public void addAfter(LNode location, LNode toba)
+	{
+		if (location.next == null)
+		{
+			location.next = toba;
+			toba.prev = location;
+		}
+		else
+		{
+			LNode originalNext = location.next;
+			originalNext.prev = toba;
+			location.next = toba;
+			toba.next = originalNext;
+			toba.prev = location;
+		}
 	}
 	
 	
-	public String toString(){
+	public String toString()
+	{
 		if (size==0) return "[]";
 		String ret = "[";
 		LNode cdr = head;
-		for (int i = 0; i<size; i++){
-			if (i==0){
+		for (int i = 0; i<size; i++)
+		{
+			if (i==0)
+			{
 				ret+=cdr.value;
 			}
-			else{
+			else
+			{
 				ret+=", "+cdr.value;
 			}
 			cdr = cdr.next;
@@ -195,14 +209,12 @@
 	}
 	
 	//END OF CODE, head OF MAIN
-	public static void main(String[] args){
+	public static void main(String[] args)
+	{
 		MyLinkedList Link = new MyLinkedList();
 		Link.add(0);
-		System.out.println("We good");
 		Link.add(1);
-		System.out.println("We good");
 		System.out.println(Link.remove(0));
-		System.out.println("We good");
 		System.out.println(Link);
 	}
 	
