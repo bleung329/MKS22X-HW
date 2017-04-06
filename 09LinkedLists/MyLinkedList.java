@@ -48,6 +48,8 @@ public class MyLinkedList{
 	//CHANGING FUNCTIONS
 	public void add(int value)
 	{
+		
+		size++;
 		if (head == null)
 		{
 			head = new LNode(value,null,null);
@@ -68,7 +70,6 @@ public class MyLinkedList{
 				}
 			}
 		}
-		size++;
 	}
 	//^I should have used getNthNode but at this point Im too afraid to.
 	
@@ -88,7 +89,6 @@ public class MyLinkedList{
 		if (index>size){
 			throw new IllegalArgumentException();
 		}
-		size--;
 		return remove(getNthNode(index));
 	}
 	
@@ -99,22 +99,26 @@ public class MyLinkedList{
 		{
 			head = null;
 			tail = null;
+			size--;
 			return Node.value;
 		}
 		if (Node == head)
 		{
-			head = head.next;
+			head = Node.next;
+			size--;
 			return Node.value;
 		}
 		if (Node == tail)
 		{
 			tail = Node.prev;
+			size--;
 			return Node.value;
 		}
 		else
 		{
 			(Node.prev).next = Node.next;
 			(Node.next).prev = Node.prev;
+			size--;
 			return Node.value;
 		}
 		
@@ -196,7 +200,8 @@ public class MyLinkedList{
 		System.out.println("We good");
 		Link.add(1);
 		System.out.println("We good");
-		Link.remove(0);
+		System.out.println(Link.remove(0));
+		System.out.println(Link.head);
 		System.out.println("We good");
 		System.out.println(Link);
 	}
