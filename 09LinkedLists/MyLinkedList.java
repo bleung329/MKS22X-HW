@@ -1,4 +1,4 @@
-public class MyLinkedList{
+                     public class MyLinkedList{
 	
 	/*
 	Whoops I kinda need to set the prev and next
@@ -11,7 +11,7 @@ public class MyLinkedList{
 	YEP get
 	YEP set
 	indexOf
-	YEP? remove(i)
+	YEP remove(i)
 	add(i,val)
 	*/
 	
@@ -49,10 +49,10 @@ public class MyLinkedList{
 	public void add(int value)
 	{
 		
-		size++;
 		if (head == null)
 		{
 			head = new LNode(value,null,null);
+			tail = head;
 		}
 		else
 		{
@@ -70,6 +70,7 @@ public class MyLinkedList{
 				}
 			}
 		}
+		size++;
 	}
 	//^I should have used getNthNode but at this point Im too afraid to.
 	
@@ -201,7 +202,6 @@ public class MyLinkedList{
 		Link.add(1);
 		System.out.println("We good");
 		System.out.println(Link.remove(0));
-		System.out.println(Link.head);
 		System.out.println("We good");
 		System.out.println(Link);
 	}
