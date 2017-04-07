@@ -1,4 +1,5 @@
-public class MyLinkedList{
+public class MyLinkedList
+{
 	
 	/*
 	Whoops I kinda need to set the prev and next
@@ -19,28 +20,33 @@ public class MyLinkedList{
 	LNode tail;
 	int size = 0;
 	
-	public MyLinkedList(){
+	public MyLinkedList()
+	{
 		//Nothing here
 	}
 	
 	//Here is the LNode
-	private class LNode{
+	public class LNode
+	{
 		int value;
 		LNode next = null;
 		LNode prev = null;
 		
 		//tbh this is the only constructor we need//
 		
-		public LNode(int val, LNode nexto, LNode previo){
+		public LNode(int val, LNode nexto, LNode previo)
+		{
 			prev = previo;
 			value = val;
 			next = nexto;
 		}
-		public LNode(int val, LNode nexto){
+		public LNode(int val, LNode nexto)
+		{
 			next = nexto;
 			value = val;
 		}
-		public String toString(){
+		public String toString()
+		{
 			return "["+value+"]";
 		}
 	}
@@ -53,6 +59,8 @@ public class MyLinkedList{
 		{
 			head = new LNode(value,null,null);
 			tail = head;
+			size++;
+			return;
 		}
 		else
 		{
@@ -86,8 +94,10 @@ public class MyLinkedList{
 	}
 	
 	//THE REMOVE SQUAD
-	public int remove(int index){
-		if (index>size){
+	public int remove(int index)
+	{
+		if (index>size)
+		{
 			throw new IllegalArgumentException();
 		}
 		return remove(getNthNode(index));
@@ -129,7 +139,7 @@ public class MyLinkedList{
 	public int size()
 	{
 		return size+0;
-	}
+	}	
 	
 	public int get(int index)
 	{
@@ -170,6 +180,10 @@ public class MyLinkedList{
 	}
 	
 	//NEW HELPFUL FUNCTIONS
+	public void add(int index, int value)
+	{
+		
+	}
 	public void addAfter(LNode location, LNode toba)
 	{
 		if (location.next == null)
@@ -207,6 +221,9 @@ public class MyLinkedList{
 		}
 		return ret+"]";
 	}
+	public String valTail(){
+		return ""+tail.value;
+	}
 	
 	//END OF CODE, head OF MAIN
 	public static void main(String[] args)
@@ -214,8 +231,9 @@ public class MyLinkedList{
 		MyLinkedList Link = new MyLinkedList();
 		Link.add(0);
 		Link.add(1);
-		System.out.println(Link.remove(0));
-		System.out.println(Link);
+		Link.add(2);
+		System.out.println(Link.remove(2));
+		System.out.println(Link.valTail());
+		
 	}
-	
 }
