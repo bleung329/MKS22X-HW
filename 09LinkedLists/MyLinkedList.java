@@ -182,7 +182,6 @@ public class MyLinkedList
 	//NEW HELPFUL FUNCTIONS
 	public void add(int index, int value)
 	{
-		
 	}
 	public void addAfter(LNode location, LNode toba)
 	{

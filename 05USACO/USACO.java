@@ -35,7 +35,6 @@ public class USACO{
 				field[i][j] = lnPar.nextInt();
 			}
 		}
-			//^This boord method is fairly useful^
 		//Here is the part where we stomp
 		int r=0;
 		int c=0;
@@ -112,14 +111,54 @@ public class USACO{
 		}
 		return ret;
     }
-    
+    public static String boord(String[][] field){
+		String ret = "Y->\n";
+		for (int i = 0; i<field.length;i++){
+			for (int j = 0;j<field[i].length;j++){
+				ret+=""+field[i][j]+"\t";
+			}
+			ret+="\n";
+		}
+		return ret;
+    }
+	
     //This is the end of the bronze problem code
     //Here is the silver problem
-    public int silver(String filename){
-		return 3;
+    public static int silver(String filename){
+		int rows, columns, time;
+		int x1, y1, x2, y2;
+		String[][] field;
+		Scanner in1 = null;
+		try{
+			File file = new File(filename);
+			in1 = new Scanner(file);
+		}
+		catch(Exception e){
+			System.out.println("Something went wrong. Exiting...");
+			System.exit(0);
+		}
+		Scanner lnPar = new Scanner(in1.nextLine()).useDelimiter("\\s");
+		rows = lnPar.nextInt();
+		columns = lnPar.nextInt();
+		time = lnPar.nextInt();
+		field = new String[rows][columns];
+		for (int i=0;i<rows;i++){
+			lnPar = new Scanner(in1.nextLine()).useDelimiter("\\s");
+			for (int j=0;j<columns;j++){
+				field[i][j] = lnPar.next();
+			}
+		}
+		x1 = lnPar.nextInt();
+		y1 = lnPar.nextInt();
+		x2 = lnPar.nextInt();
+		y2 = lnPar.nextInt();
+		System.out.println(boord(field));
+		return 0;
 	}
 	public static void main(String[] args){
-		System.out.println(USACO.bronze(args[0]));
+		//System.out.println(USACO.bronze(args[0]));
+		System.out.println(USACO.silver(args[0]));
+		
 	}
     //End of the silver
 }
