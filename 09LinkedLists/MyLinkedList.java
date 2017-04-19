@@ -233,6 +233,7 @@ public class MyLinkedList
 		Link.add(2);
 		System.out.println(Link.remove(2));
 		System.out.println(Link.valTail());
+		System.out.println(Link.head);
 		
 	}
 }
