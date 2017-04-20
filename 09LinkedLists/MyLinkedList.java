@@ -1,5 +1,9 @@
-public class MyLinkedList
+import java.util.Iterator;
+import java.lang.Iterable;
+import java.util.NoSuchElementException;
+public class MyLinkedList implements Iterable<Integer>
 {
+	public static void p(Object a){System.out.println(a);}
 	
 	/*
 	Whoops I kinda need to set the prev and next
@@ -24,6 +28,46 @@ public class MyLinkedList
 	{
 		//Nothing here
 	}
+	
+	//Now its time to get funky
+	public Iterator<Integer> iterator()
+	{
+		return (Iterator<Integer>) new LNodeIterator();
+	}
+	public class LNodeIterator implements Iterator<Integer>
+	{
+		LNode home = head;
+		
+		@Override
+		public boolean hasNext()
+		{
+			//p("woo?");
+			boolean rt = (home==null);
+			//p(rt);
+			return !(rt);
+		}
+		
+		@Override
+		public Integer next()
+		{
+				LNode rt = home;
+				home = home.next;
+				return (Integer)rt.value;	
+		/*	}
+			else
+			{
+				return null;
+				//throw new NoSuchElementException();
+			}*/
+		}
+		
+		@Override
+		public void remove()
+		{
+			throw new UnsupportedOperationException();
+		}
+	}
+	//Now stop getting funky
 	
 	//Here is the LNode
 	public class LNode
@@ -173,8 +217,10 @@ public class MyLinkedList
 		LNode cdr = head;
 		for (int i = 0; i<size; i++)
 		{
-			if (cdr.value==target) return i;
-			else cdr = cdr.next;
+			if (cdr.value==target) 
+				return i;
+			else 
+				cdr = cdr.next;
 		}
 		return -1;
 	}
@@ -220,7 +266,8 @@ public class MyLinkedList
 		}
 		return ret+"]";
 	}
-	public String valTail(){
+	public String valTail()
+	{
 		return ""+tail.value;
 	}
 	
@@ -231,9 +278,20 @@ public class MyLinkedList
 		Link.add(0);
 		Link.add(1);
 		Link.add(2);
+		Link.add(3);
+		//p("?");
+		for (Integer i: Link){
+			//p("?");
+			System.out.println(i);
+		}
+		/*
+		System.out.println(Link.indexOf(3));
 		System.out.println(Link.remove(2));
+		System.out.println(Link.remove(1));
 		System.out.println(Link.valTail());
 		System.out.println(Link.head);
+		System.out.println(Link.remove(0));
+		*/
 		
 	}
 }
