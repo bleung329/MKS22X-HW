@@ -1,7 +1,12 @@
 import java.util.Stack;
+import java.util.Arrays;
 
 public class Eval
 {
+	public static void p(Stack a)
+	{
+		System.out.println("The stack is currently: "+Arrays.toString(a.toArray()));
+	}
 	public static double eval(String S)
 	{
 		String[] s = S.split(" ");	
@@ -11,7 +16,30 @@ public class Eval
 			//System.out.println(s[i]);
 			ops.add(s[i]);
 		}
-		return 1.0;
+		String[] holder = new String[3];
+		String temp = "";
+		while (ops.size() > 1)
+		{
+			for (int i = 0; i<holder.length; i++)
+			{
+				holder[i] = ops.pop();
+			}
+			p(ops);
+			System.out.println(Arrays.toString(holder));
+			if (isOp(holder[2]))
+			{
+				temp = Double.toString(apply(holder[0],holder[1],holder[2]));
+				ops.add(temp);
+			}
+			else
+			{
+				for(String item: holder)
+				{
+					ops.add(item);
+				}
+			}
+		}
+		return Double.parseDouble(ops.pop());
 	}
 	public static boolean isOp(String s)
 	{
@@ -19,27 +47,28 @@ public class Eval
 	}
 	public static double apply(String A, String B, String OP)
 	{
-		double a = Double.parseDouble(A);
-		double b = Double.parseDouble(B);
-		switch (OP)
-		{
-			case "+":
-				return (a+b);
-			case "-":
-				return (a-b);
-			case "/":
-				return (a/b);
-			case "*":
-				return (a*b);
-			case "%":
-				return (a%b);
-			default:
-				break;
-		}
-		return -0.0;	
+			double a = Double.parseDouble(A);
+			double b = Double.parseDouble(B);
+			switch (OP)
+			{
+				case "+":
+					return (a+b);
+				case "-":
+					return (a-b);
+				case "/":
+					return (a/b);
+				case "*":
+					return (a*b);
+				case "%":
+					return (a%b);	
+				default:
+					break;
+					
+			}
+			return 0;
 	}
 	public static void main(String[] args)
 	{
-		eval("1 2 3 + +");
+		System.out.println(eval("1 2 3 + +"));
 	}
 }
