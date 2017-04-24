@@ -82,6 +82,10 @@ public class StackCalc
 	}
 	public static void main(String[] args)
 	{
+<<<<<<< HEAD:11Eval/StackCalc.java
 		System.out.println(eval("2 3 +"));
+=======
+		System.out.println(eval("3 1 2 3 + + +"));
+>>>>>>> 0f0f2282b212da0fd8adc4c501ab1e64e9af940e:11Eval/Eval.java
 	}
-}
+} 
