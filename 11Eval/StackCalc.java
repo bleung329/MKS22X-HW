@@ -2,7 +2,7 @@ import java.util.Stack;
 import java.util.Arrays;
 import java.util.Queue;
 
-public class Eval
+public class StackCalc
 {
 	public static void p(Stack a)
 	{
@@ -28,7 +28,7 @@ public class Eval
 			holder[i] = ops.pop();
 		}
 		System.out.println(ops.size());
-		while (ops.size() > 0 && holder.length >= 0)
+		while (ops.size() > -1 && holder.length >= 0)
 		{
 			System.out.println("what");
 			if (isOp(holder[2]))
