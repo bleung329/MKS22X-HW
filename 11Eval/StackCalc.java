@@ -23,20 +23,23 @@ public class StackCalc
 		String[] holder = new String[3];
 		String temp = "";
 		
-		for (int i = 0; i<3; i++)
-		{
-			holder[i] = ops.pop();
-		}
 		System.out.println(ops.size());
-		while (ops.size() > -1 && holder.length >= 0)
+		while (ops.size()!=1)
 		{
-			System.out.println("what");
+			
+			for (int i = 0; i<3; i++)
+			{
+				holder[i] = ops.pop();
+			}
+			
 			if (isOp(holder[2]))
 			{
 				temp = Double.toString(apply(holder[0],holder[1],holder[2]));
 				ops.add(temp);
-				p(ops);
-				System.out.println("Holder is: "+Arrays.toString(holder));
+				for (int i = 0; i<3; i++)
+				{
+					holder[i] = null;
+				}
 			}
 			else
 			{
@@ -51,7 +54,6 @@ public class StackCalc
 		}
 		p(ops);
 		System.out.println("Holder is: "+Arrays.toString(holder));
-		ops.add(holder[0]);
 		return Double.parseDouble(ops.pop());
 	}
 	public static boolean isOp(String s)
@@ -82,10 +84,7 @@ public class StackCalc
 	}
 	public static void main(String[] args)
 	{
-<<<<<<< HEAD:11Eval/StackCalc.java
 		System.out.println(eval("2 3 +"));
-=======
 		System.out.println(eval("3 1 2 3 + + +"));
->>>>>>> 0f0f2282b212da0fd8adc4c501ab1e64e9af940e:11Eval/Eval.java
 	}
 } 
