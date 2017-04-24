@@ -69,6 +69,6 @@ public class Eval
 	}
 	public static void main(String[] args)
 	{
-		System.out.println(eval("1 2 3 + +"));
+		System.out.println(eval("3 1 2 3 + + +"));
 	}
-}
+} 
