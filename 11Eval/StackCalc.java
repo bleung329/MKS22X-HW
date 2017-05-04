@@ -8,6 +8,7 @@ public class StackCalc
 	{
 		System.out.println("The stack is currently: "+Arrays.toString(a.toArray()));
 	}
+	/*
 	public static double eval(String S)
 	{
 		//PARSE STRING
@@ -55,12 +56,29 @@ public class StackCalc
 		p(ops);
 		System.out.println("Holder is: "+Arrays.toString(holder));
 		return Double.parseDouble(ops.pop());
-	}
+	}*/
 	public static boolean isOp(String s)
 	{
 		return (s.equals("+")|s.equals("-")|s.equals("/")|s.equals("*")|s.equals("%"));
 	}
-	public static double apply(String A, String B, String OP)
+	public static double eval(String s)
+	{
+		String[] tokens = s.split(" ");
+		Stack<String> nums = new Stack<String>();
+		for (String token:tokens)
+		{
+			if (isOp(token))
+			{
+				nums.push(Double.toString(apply(token,nums.pop(),nums.pop())));
+			}
+			else
+			{
+				nums.push(token);
+			}
+		}
+		return Double.parseDouble(nums.pop());
+	}
+	public static double apply(String OP, String A, String B)
 	{
 			double a = Double.parseDouble(A);
 			double b = Double.parseDouble(B);
@@ -82,9 +100,9 @@ public class StackCalc
 			}
 			return 0;
 	}
-	public static void main(String[] args)
+	/*public static void main(String[] args)
 	{
 		System.out.println(eval("2 3 +"));
 		System.out.println(eval("3 1 2 3 + + +"));
-	}
+	}*/
 } 
