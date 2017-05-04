@@ -8,6 +8,9 @@ public class StackCalc
 	{
 		System.out.println("The stack is currently: "+Arrays.toString(a.toArray()));
 	}
+	public StackCalc()
+	{
+	}
 	/*
 	public static double eval(String S)
 	{
@@ -87,7 +90,7 @@ public class StackCalc
 				case "+":
 					return (a+b);
 				case "-":
-					return (a-b);
+					return (b-a);
 				case "/":
 					return (a/b);
 				case "*":
@@ -104,5 +107,14 @@ public class StackCalc
 	{
 		System.out.println(eval("2 3 +"));
 		System.out.println(eval("3 1 2 3 + + +"));
+	}*//*
+	public static void main(String[] args)
+	{
+    System.out.println(StackCalc.eval("10 2 +"));//12.0
+    System.out.println(StackCalc.eval("10 2 -"));//8.0
+    System.out.println(StackCalc.eval("10 2.0 +"));//12.0
+    System.out.println(StackCalc.eval("11 3 - 4 + 2.5 *"));//30.0
+    System.out.println(StackCalc.eval("8 2 + 99 9 - * 2 + 9 -"));//893.0
+    System.out.println(StackCalc.eval("10 2 + 10 * 1 + 1 1 1 + + + 10 10 + -"));//104.0
 	}*/
 } 
