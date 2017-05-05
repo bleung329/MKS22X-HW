@@ -1,7 +1,6 @@
-public class ExpressionTree
-{
-  /*return the value of the specified expression tree*/
+public class ExpressionTree{
   
+  /*return the value of the specified expression tree*/
   public double evaluate(){
     /*you are to write this method*/
     return 0.0;
@@ -10,6 +9,8 @@ public class ExpressionTree
   /*return the expression as an infix notation string with parenthesis*/
   /* The sample tree would be: "( 3 + (2 * 10))"     */
   public String toString(){
+	String ret = "(";
+	
     /*you are to write this method*/
     return "";
   }
@@ -28,6 +29,7 @@ public class ExpressionTree
     /*you are to write this method*/
     return "";
   }
+   
   private char op;
   private double value;
   private ExpressionTree left,right;
@@ -44,6 +46,7 @@ public class ExpressionTree
     left = l;
     right = r;
   }
+
   public char getOp(){
     return op;
   }
@@ -56,7 +59,8 @@ public class ExpressionTree
   private ExpressionTree getLeft(){
     return left;
   }
-   private ExpressionTree getRight(){
+  /* accessor method for right, precondition is that isOp() is true.*/
+  private ExpressionTree getRight(){
     return right;
   }
   
@@ -70,9 +74,4 @@ public class ExpressionTree
   private boolean hasChildren(){
     return left != null && right != null;
   }
-  
-  
-  
-  
-  
 }
