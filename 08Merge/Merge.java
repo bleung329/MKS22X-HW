@@ -1,6 +1,10 @@
 import java.util.Random;
 public class Merge{
 	public static void mergesort(int[] arr){
+		if (arr.length == 0)
+		{
+			return;
+		}
 		if (arr.length == 1){
 			//System.out.println("Going up");
 			return;
