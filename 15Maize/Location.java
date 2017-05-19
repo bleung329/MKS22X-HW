@@ -24,11 +24,17 @@ public class Location implements Comparable<Location>
 	
 	public int compareTo(Location other)
 	{
-		return 2;
+		//Compare the distance to end
 	}
 	
 	public Location getStart()
 	{
+		Location prev = previous;
+		while !(previous == null)
+		{
+			prev = prev.previous;
+		}
+		return prev;
 	}
 	
 	public Location getEnd()
