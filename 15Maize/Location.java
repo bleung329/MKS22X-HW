@@ -30,7 +30,7 @@ public class Location implements Comparable<Location>
 	public Location getStart()
 	{
 		Location prev = previous;
-		while !(previous == null)
+		while (!(previous == null))
 		{
 			prev = prev.previous;
 		}
