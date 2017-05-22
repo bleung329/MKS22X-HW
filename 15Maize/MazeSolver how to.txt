@@ -1,0 +1,13 @@
+to solve():
+	rest = new FrontierType()
+	rest.add(getFirstMove(maze))
+	while rest.size() > 0 and !solved:
+		current = rest.next()
+		check if solved here:
+			if true, set solved to true, and trace back
+				traceback -> just set the previous to .
+				put an E at the end
+				put an S at the start
+				put @ sign for path
+		for (each: getNeighbors(current)):
+			rest.add(each) <- change the maze space to ?

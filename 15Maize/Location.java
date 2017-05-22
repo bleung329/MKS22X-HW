@@ -25,6 +25,7 @@ public class Location implements Comparable<Location>
 	public int compareTo(Location other)
 	{
 		//Compare the distance to end
+		//Or compare the distance from start + distance to end
 	}
 	
 	public Location getStart()
@@ -38,6 +39,10 @@ public class Location implements Comparable<Location>
 	}
 	
 	public Location getEnd()
+	{
+	}
+	
+	public Location getNeighbors()
 	{
 	}
 }

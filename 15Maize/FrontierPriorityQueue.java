@@ -15,5 +15,9 @@ public class FrontierPriorityQueue implements Frontier
 	{
 		
 	}
+	public int size()
+	{
+		return locations.size+0;
+	}
 	
 }
