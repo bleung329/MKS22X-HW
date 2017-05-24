@@ -36,6 +36,13 @@ public class MazeSolver
 			if (current == board.mazeEnd)
 			{
 				solved = true;
+				board.set(current,'E');
+				while (!(current.previous==null))
+				{
+					current = current.previous;
+					board.set(current, '@');
+				}
+				board.set(current, 'S');
 			}
 		}
 	}

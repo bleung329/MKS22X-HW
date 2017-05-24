@@ -1,0 +1,10 @@
+Notes for 5.24.17
+Processing!
+
+You can load .java files into processing.
+
+setup() - runs once and thats it
+
+draw() - runs in a loop
+
+A lot of things are in the reference online.

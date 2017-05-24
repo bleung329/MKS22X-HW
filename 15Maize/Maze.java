@@ -118,6 +118,10 @@ public class Maze{
   public void set(int row,int col, char n){
     maze[row][col] = n;
   }
+  public void set(Location loc, char n)
+  {
+	  set(loc.row,loc.col,n)
+  }
   public static String colorize(String s){
     String ans = "";
     Scanner in = new Scanner(s);
